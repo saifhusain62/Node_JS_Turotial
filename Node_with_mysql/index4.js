@@ -17,7 +17,9 @@ connection.connect(function(error){
     }
     else{
         console.log("Connection Success");
-        InsertData(connection);
+        // InsertData(connection);
+        // UpdateData(connection);
+        Select(connection);
     }
 });
 
@@ -37,4 +39,30 @@ function InsertData(connection){
 
 
 
+}
+
+function UpdateData(connection){
+
+    let SQLQuery="UPDATE `class` SET `email`='sakib8@gmail.com' WHERE id=277";
+    connection.query(SQLQuery,function(error){
+        if(error){
+            console.log("Data Update Failed");
+
+        }
+        else{
+            console.log("Data Update Success");
+        }
+    })
+}
+function Select(connection){
+
+    let SQLQuery="SELECT * FROM `class`";
+      connection.query(SQLQuery,function(error,result){
+        if(error){
+            console.log("Select not success");
+        }
+        else{
+            console.log(result);
+        }
+      })
 }
